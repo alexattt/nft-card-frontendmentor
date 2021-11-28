@@ -1,0 +1,242 @@
+/***** some base definitions from https://piccalil.li/blog/a-modern-css-reset/ *****/
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+body {
+  font-size: 18px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+  background-color: var(--main-darkblue);
+}
+
+/***** defining colors etc. *****/
+
+:root {
+  --primary-softblue: hsl(215, 51%, 70%);
+  --primary-cyan: hsl(178, 100%, 50%);
+  --main-darkblue: hsl(217, 54%, 11%);
+  --card-darkblue: hsl(216, 50%, 16%);
+  --line-darkblue: hsl(215, 32%, 27%);
+  --white: hsl(0, 0%, 100%);
+}
+
+/***** main styles *****/
+
+svg {
+  align-self: center;
+}
+
+hr {
+  height: 1px;
+  border-color: var(--primary-softblue);
+  opacity: 0.3;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  -webkit-box-shadow: 0px 0px 20px 2px #000000; 
+  box-shadow: 0px 0px 20px 2px #000000;
+}
+
+.content-container {
+  width: 400px;
+  height: auto;
+  border-radius: 15px;
+  padding: 30px;
+  background-color: var(--card-darkblue);
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.nft-image-container {
+  position: relative;
+  border-radius: 3%;
+  background-color: var(--primary-cyan);
+}
+
+.nft-image {
+  transition: opacity 0.6s ease;
+}
+
+.nft-image img {
+  border-radius: 3%;
+}
+
+.nft-image-view {
+  width: 60px;
+  height: auto;
+}
+
+.nft-view-container {
+  position: absolute;
+  align-items: center;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.nft-view-container p {
+  color: var(--white);
+  font-weight: 600;
+}
+
+.nft-title {
+  padding: 25px 0 15px 0;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--white);
+  transition: color 0.6s ease;
+}
+
+.nft-description {
+  padding-bottom: 20px;
+  color: var(--primary-softblue);
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+.price-time-container {
+  justify-content: space-between;
+  padding-bottom: 15px;
+}
+
+.nft-price {
+  align-self: center;
+  color: var(--primary-cyan);
+  font-size: 14px;
+  font-weight: 600;
+  padding-left: 10px;
+}
+
+.time-left {
+  align-self: center;
+  color: var(--primary-softblue);
+  font-size: 14px;
+  font-weight: 400;
+  padding-left: 10px;
+}
+
+.author-container {
+  align-items: center;
+  padding-top: 10px;
+}
+
+.nft-author {
+  font-size: 16px;
+  font-weight: 400;
+  padding-left: 15px;
+  color: var(--primary-softblue);
+}
+
+.nft-author-name {
+  color: var(--white);
+  transition: color 0.6s ease;
+}
+
+.nft-author-img {
+  width: 35px;
+  height: 35px;
+  border: 1px solid var(--white);
+  border-radius: 50%;
+}
+
+.attribution {
+  position: absolute;
+  bottom: 3%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: var(--white);
+  font-size: 14px;
+}
+
+.attribution a {
+  color: var(--primary-cyan);
+}
+
+/***** hovers and other effects *****/
+
+.nft-title:hover, .nft-author-name:hover {
+  color: var(--primary-cyan);
+  cursor: pointer;
+}
+
+.nft-image-container:hover .nft-image {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.nft-image-container:hover .nft-view-container {
+  opacity: 1;
+}
+
+/***** mobile view *****/
+
+@media (max-width:375px) {
+  body {
+    font-size: 14px;
+  }
+
+  .content-container {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .nft-title {
+    font-size: 21px;
+  }
+
+  .nft-price, .time-left {
+    font: 10px;
+  }
+}
